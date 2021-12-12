@@ -32,6 +32,7 @@ class Check:
         register_type = inst.insn.operands[0]
         proj.analyses.LoopFinder(normalize=True)
         register = inst.insn.reg_name(register_type.reg)
+        size = self.get_size(block, self.addr)
         state = proj.factory.full_init_state(addr=self.addr + size, add_options=angr.options.unicorn)
         setattr(state.regs, register, state.solver.BVS('a', 32))
         self.value = getattr(state.regs, register)
@@ -66,6 +67,7 @@ class Check:
         register_type = inst.insn.operands[0]
         proj.analyses.LoopFinder(normalize=True)
         register = inst.insn.reg_name(register_type.reg)
+        size = self.get_size(block, self.addr)
         state = proj.factory.full_init_state(addr=self.addr + size, add_options=angr.options.unicorn)
         setattr(state.regs, register, state.solver.BVS('a', 64))
         self.value = getattr(state.regs, register)
@@ -148,3 +150,8 @@ class Check:
                     l.info("found a function call with 2 arguments")
                     return True
         return False
+
+    def get_size(self, b, addr):
+        for x in range(0, len(b)):
+            if b.capstone.insns[x].addr == addr:
+                return b.capstone.insns[x + 1].addr - b.capstone.insns[x].addr
