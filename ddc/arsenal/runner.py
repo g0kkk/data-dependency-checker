@@ -151,7 +151,7 @@ class Check:
                     return True
         return False
 
-    def get_size(self, b, addr):
+    def get_size(self, b):
         for x in range(0, len(b.capstone.insns)):
-            if b.capstone.insns[x].addr == addr:
-                return b.capstone.insns[x + 1].addr - b.capstone.insns[x].addr
+            if b.capstone.insns[x].addr == self.addr:
+                return b.capstone.insns[x + 1].addr - self.addr
