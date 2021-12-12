@@ -15,7 +15,7 @@ DDC as of now only supports **x86-64** and **x86** with support for more archite
 
 ### Installation
 
-I suggest to install this in a virtualenv and to install, simply run `pip3 install -e .`
+I suggest to install this in a virtualenv and to install, run `pip3 install -r requirements.txt` followed by `pip3 install -e .`
 
 ### Usage
 
