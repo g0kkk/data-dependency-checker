@@ -5,7 +5,7 @@ import logging as l
 
 
 class Check:
-    def __init__(self, target, arch, addr, value):
+    def __init__(self, target, arch, addr, value=0):
         self.target = target
         self.arch = arch
         self.addr = addr
@@ -152,6 +152,6 @@ class Check:
         return False
 
     def get_size(self, b, addr):
-        for x in range(0, len(b)):
+        for x in range(0, len(b.capstone.insns)):
             if b.capstone.insns[x].addr == addr:
                 return b.capstone.insns[x + 1].addr - b.capstone.insns[x].addr
