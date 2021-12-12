@@ -1,3 +1,4 @@
+import claripy
 import angr
 import sys
 
@@ -34,7 +35,7 @@ class Check:
         register = inst.insn.reg_name(register_type.reg)
         size = self.get_size(block)
         state = proj.factory.full_init_state(addr=self.addr + size, add_options=angr.options.unicorn)
-        setattr(state.regs, register, state.solver.BVS('a', 32))
+        setattr(state.regs, register, state.solver.BVS('aaa', 32))
         self.value = getattr(state.regs, register)
         if self.value != proj.arch.bits:
             self.value = self.value.zero_extend(proj.arch.bits - self.value.length)
@@ -69,7 +70,7 @@ class Check:
         register = inst.insn.reg_name(register_type.reg)
         size = self.get_size(block)
         state = proj.factory.full_init_state(addr=self.addr + size, add_options=angr.options.unicorn)
-        setattr(state.regs, register, state.solver.BVS('a', 64))
+        setattr(state.regs, register, state.solver.BVS('aaa', 64))
         self.value = getattr(state.regs, register)
         if self.value != proj.arch.bits:
             self.value = self.value.zero_extend(proj.arch.bits - self.value.length)
