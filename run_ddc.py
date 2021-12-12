@@ -11,5 +11,5 @@ def main():
     parser.add_argument("-p", "--project-type", help="either x86 or x86_64")
 
     args = parser.parse_args()
-    obj = ddc.Check(target=args.target, addr=args.addr, arch=args.project_type, value=0)
+    obj = ddc.Check(target=args.target, addr=int(args.addr, 16), arch=args.project_type, value=0)
     obj.load_bin()
