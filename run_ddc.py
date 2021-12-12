@@ -13,3 +13,7 @@ def main():
     args = parser.parse_args()
     obj = ddc.Check(target=args.target, addr=int(args.addr, 16), arch=args.project_type, value=0)
     obj.load_bin()
+
+
+if __name__ == "__main__":
+    main()
