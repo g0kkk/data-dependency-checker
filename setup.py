@@ -7,7 +7,6 @@ setup(
     author="Gokul",
     author_email="gpraveen@asu.edu",
     install_requires=[
-        'angr',
-        'logging'
+        'angr'
     ]
 )
