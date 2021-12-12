@@ -37,8 +37,8 @@ class Check:
         state = proj.factory.full_init_state(addr=self.addr + size, add_options=angr.options.unicorn)
         setattr(state.regs, register, state.solver.BVS('aaa', 32))
         self.value = getattr(state.regs, register)
-        if self.value != proj.arch.bits:
-            self.value = self.value.zero_extend(proj.arch.bits - self.value.length)
+        # if self.value != proj.arch.bits:
+        #     self.value = self.value.zero_extend(proj.arch.bits - self.value.length)
         state.inspect.b('instruction', when=angr.BP_AFTER, action=self.explore_compare)
         sim = proj.factory.simulation_manager(state)
         sim.use_technique(angr.exploration_techniques.LoopSeer(bound=1))
@@ -72,8 +72,8 @@ class Check:
         state = proj.factory.full_init_state(addr=self.addr + size, add_options=angr.options.unicorn)
         setattr(state.regs, register, state.solver.BVS('aaa', 64))
         self.value = getattr(state.regs, register)
-        if self.value != proj.arch.bits:
-            self.value = self.value.zero_extend(proj.arch.bits - self.value.length)
+        # if self.value != proj.arch.bits:
+        #     self.value = self.value.zero_extend(proj.arch.bits - self.value.length)
         state.inspect.b('instruction', when=angr.BP_AFTER, action=self.explore_compare)
         sim = proj.factory.simulation_manager(state)
         sim.use_technique(angr.exploration_techniques.LoopSeer(bound=1))
