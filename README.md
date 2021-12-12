@@ -26,3 +26,5 @@ There is a helper script (`run_ddc.py`) provided which accepts the following arg
 -a : Address at which the check needs to be done
 -p : Arch (currently supports x86 and x86_64)
 ```
+
+Inside `test_binaries`, a script to run on the program `hello` is included. 
